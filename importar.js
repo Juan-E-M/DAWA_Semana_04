@@ -16,7 +16,7 @@ var rutas = {
 http.createServer(function(req, res) {
     var ruta = req.url;
 
-    if (ruta in rutas) {
+    
         var archivo = rutas[ruta];
         fs.readFile('./' + archivo, function(err, html) {
             if (err) {
@@ -46,9 +46,5 @@ http.createServer(function(req, res) {
             res.write(html_string);
             res.end();
         });
-    } else {
-        res.writeHead(404, {'Content-type': 'text/plain'});
-        res.write('Error 404: Archivo no encontrado');
-        res.end();
-    }
+    
 }).listen(8080);
